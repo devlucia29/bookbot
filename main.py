@@ -3,13 +3,14 @@ def main():
     content = read_file_content(file_path)
     total_words = numbers_of_words(content)
     total_characters = numbers_of_characters(content)
+    total_characters_sorted = {k: v for k, v in sorted(total_characters.items(), key = lambda v: v[1], reverse = True)}
     print("--- Begin report of books/frankestein.txt ---")
     print(f"{total_words} words found in the document")
     print("\n")
-    for character in total_characters:
+    for character in total_characters_sorted:
         if character.isalpha():
             print(
-                f"The {character} character was found {total_characters.get(character)} times"
+                f"The {character} character was found {total_characters_sorted.get(character)} times"
             )
     print("--- End report ---")
 
